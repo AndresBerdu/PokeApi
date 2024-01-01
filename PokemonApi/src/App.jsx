@@ -27,12 +27,12 @@ const App = () => {
     let pokemon_v1Img = await getPokemonImgs(pokemon_v1);
     pokemonEvoArray.push([pokemon_v1, pokemon_v1Img]);
     
-    if(data.chain.evolves_to.lentgth !== 0){
+    if(data.chain.evolves_to.length !== 0){
       let pokemon_v2 = data.chain.evolves_to[0].species.name;
       let pokemon_v2Img = await getPokemonImgs(pokemon_v2);
       pokemonEvoArray.push([pokemon_v2, pokemon_v2Img]);
 
-      if(data.chain.evolves_to[0].evolves_to.lentgth !== 0){
+      if(data.chain.evolves_to[0].evolves_to.length !== 0){
         let pokemon_v3 = data.chain.evolves_to[0].evolves_to[0].species.name;
         let pokemon_v3Img = await getPokemonImgs(pokemon_v3);
         pokemonEvoArray.push([pokemon_v3, pokemon_v3Img]);
@@ -58,7 +58,7 @@ const App = () => {
 
   return (
     <div className='app'>
-      <div className={`card-container card${pokemonEvolutions}`}>
+      <div className={`card-container card${pokemonEvolutions.length}`}>
         {pokemonEvolutions.map(pokemon => 
           <CardPokemon 
             key={pokemon[0]}
